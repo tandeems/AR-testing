@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Geo AR Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ar.js@3.4.2/aframe/build/aframe-ar.min.js"></script>
+    <style>
+      html, body { margin: 0; padding: 0; overflow: hidden; }
+    </style>
+  </head>
+  <body>
+    <a-scene
+      vr-mode-ui="enabled: false"
+      embedded
+      arjs="sourceType: webcam; gpsMinAccuracy: 50;"
+      renderer="logarithmicDepthBuffer: true;"
+    >
+      <!-- GPS-based AR camera -->
+      <a-camera gps-camera rotation-reader></a-camera>
+
+      <!-- 3D Model at specified location -->
+      <a-entity
+        gltf-model="model.glb"
+        gps-entity-place="latitude: 56.944465; longitude: 24.138970;"
+        scale="5 5 5"
+        rotation="0 180 0"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>
